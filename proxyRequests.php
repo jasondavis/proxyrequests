@@ -6,10 +6,12 @@
  */
 class requests {
 
-    public $proxylist = 'proxy.txt';
-    public $multi = true;
-    public $postdata = false;
-    public $multi_limit = 800; // more paralell requests are not recommended
+    function __construct() {
+	$this->proxylist = 'proxy.txt';
+	$this->multi = true;
+	$this->postdata = false;
+	$this->multi_limit = 1020; // more paralell requests are not recommended
+    }
 
     /**
      * Function get(url, proxy) will send
@@ -17,11 +19,10 @@ class requests {
      * @param type $proxy
      * @return type string
      */
-
     public function get($url, $proxy = false) {
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 	curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 10);
 	if ($proxy) {
@@ -52,7 +53,7 @@ class requests {
 	$offset = 0;
 
 	for ($pass = 0; $pass < $passes; $pass++) {
-	    
+
 	    $ch = array();
 	    $master = curl_multi_init(); //create multi curl resource
 	    $proxies = array_slice($this->proxies, $limit * $pass, $limit);
@@ -65,7 +66,7 @@ class requests {
 	    for ($i = 0; $i < $limit; $i++) {
 		$ch[$i] = curl_init();
 		curl_setopt($ch[$i], CURLOPT_URL, $url);
-		curl_setopt($ch[$i], CURLOPT_RETURNTRANSFER, TRUE);
+		curl_setopt($ch[$i], CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch[$i], CURLOPT_USERAGENT, rand(1, 10000));
 		curl_setopt($ch[$i], CURLOPT_FOLLOWLOCATION, 1);
 		curl_setopt($ch[$i], CURLOPT_CONNECTTIMEOUT, 15);
