@@ -6,7 +6,7 @@
 * URI: http://360percents.com/
 
 ## Description
-Proxyrequests is (will be) a proxy grabber, checker and request handler (single and paralell). Class proxylist scrapes proxies from daily updated online lists and saves them to a file. It can also check existing proxy lists. Class requests can easily initiate paralell or single http GET | POST connections tunneled through proxies from our proxy file. This program can be used for increasing view counts on several sites, increasing online voteing and polls results, anonymous scrapeing...
+Proxyrequests is (will be) a proxy grabber, checker and request handler (single and paralell). Class proxylist scrapes proxies from daily updated online lists and saves them to a file. It can also check existing proxy lists. Class requests can easily initiate paralell or single http GET | POST connections tunneled through proxies from our proxy file.
 
 
 ## System requirements
